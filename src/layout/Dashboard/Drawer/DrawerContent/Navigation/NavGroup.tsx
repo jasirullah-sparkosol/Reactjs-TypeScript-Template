@@ -299,7 +299,8 @@ export default function NavGroup({
                             )}
                         </>
                     }
-                    sx={{ mt: drawerOpen && item.title ? 1.5 : 0, py: 0, zIndex: 0 }}>
+                    sx={{ mt: drawerOpen && item.title ? 1.5 : 0, py: 0, zIndex: 0 }}
+                >
                     {navCollapse}
                 </List>
             ) : (
@@ -317,7 +318,8 @@ export default function NavGroup({
                         onMouseEnter={handleClick}
                         onClick={handleClick}
                         onMouseLeave={handleClose}
-                        aria-describedby={popperId}>
+                        aria-describedby={popperId}
+                    >
                         {itemIcon && (
                             <ListItemIcon sx={{ minWidth: 28 }}>
                                 {currentItem.id === lastItemId ? <GroupOutlined style={{ fontSize: 20, stroke: '1.5' }} /> : itemIcon}
@@ -342,7 +344,8 @@ export default function NavGroup({
                                 open={openMini}
                                 anchorEl={anchorEl}
                                 placement="bottom-start"
-                                style={{ zIndex: 2001 }}>
+                                style={{ zIndex: 2001 }}
+                            >
                                 {({ TransitionProps }) => (
                                     <Transitions in={openMini} {...TransitionProps}>
                                         <Paper
@@ -351,7 +354,8 @@ export default function NavGroup({
                                                 py: 1.25,
                                                 boxShadow: theme.shadows[8],
                                                 backgroundImage: 'none'
-                                            }}>
+                                            }}
+                                        >
                                             <ClickAwayListener onClickAway={handleClose}>
                                                 <>
                                                     <SimpleBar
@@ -360,7 +364,8 @@ export default function NavGroup({
                                                             overflowX: 'hidden',
                                                             overflowY: 'auto',
                                                             maxHeight: 'calc(100vh - 170px)'
-                                                        }}>
+                                                        }}
+                                                    >
                                                         {currentItem.id !== lastItemId ? items : moreItems}
                                                     </SimpleBar>
                                                 </>

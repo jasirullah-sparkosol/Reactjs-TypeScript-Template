@@ -19,34 +19,34 @@ import { PersistGate } from 'redux-persist/integration/react';
 const APP_NAME = import.meta.env.VITE_APP_NAME as string;
 
 const persistConfig = {
-  keyPrefix: APP_NAME.replaceAll(' ', '-').toLowerCase() + '-',
-  key: 'store',
-  storage: createWebStorage('local'),
-  transforms: [
-    // For Store Encryption in LocalStorage
-    encryptTransform({
-      secretKey: 'Developed-By-Jasir-Ullah-Khan',
-      onError: function (error: any) {
-        console.log('Error during encryption', error);
-      }
-    })
-  ]
-  // whitelist : ["amount"],
-  // blacklist : ["users"],
+    keyPrefix: APP_NAME.replaceAll(' ', '-').toLowerCase() + '-',
+    key: 'store',
+    storage: createWebStorage('local'),
+    transforms: [
+        // For Store Encryption in LocalStorage
+        encryptTransform({
+            secretKey: 'Developed-By-Jasir-Ullah-Khan',
+            onError: function (error: any) {
+                console.log('Error during encryption', error);
+            }
+        })
+    ]
+    // whitelist : ["amount"],
+    // blacklist : ["users"],
 };
 
 // Persist All reducers
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
-    }).concat(...apiMiddlewares);
-  }
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+            }
+        }).concat(...apiMiddlewares);
+    }
 });
 
 // Setup React Query listeners for re-fetching on app focus or network change etc
@@ -58,17 +58,17 @@ const persistor = persistStore(store) as Persistor;
 const { dispatch } = store;
 
 interface ReduxPersistedProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 const ReduxPersisted = ({ children }: ReduxPersistedProps) => {
-  return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        {children}
-      </PersistGate>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                {children}
+            </PersistGate>
+        </Provider>
+    );
 };
 
 export { store, dispatch, ReduxPersisted };

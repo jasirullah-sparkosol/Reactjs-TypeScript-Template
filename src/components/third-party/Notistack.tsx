@@ -58,7 +58,8 @@ export default function Notistack({ children }: any) {
                       }
                     : undefined
             }
-            hideIconVariant={snackbar.iconVariant === 'hide' ? true : false}>
+            hideIconVariant={snackbar.iconVariant === 'hide' ? true : false}
+        >
             {children}
         </StyledSnackbarProvider>
     );

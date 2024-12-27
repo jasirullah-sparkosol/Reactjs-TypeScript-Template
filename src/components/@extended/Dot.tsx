@@ -7,27 +7,27 @@ import { ColorProps } from 'types/extended';
 import getColors from 'utils/getColors';
 
 interface Props {
-  color?: ColorProps;
-  size?: number;
-  variant?: string;
-  sx?: BoxProps['sx'];
+    color?: ColorProps;
+    size?: number;
+    variant?: string;
+    sx?: BoxProps['sx'];
 }
 
 export default function Dot({ color, size, variant, sx }: Props) {
-  const theme = useTheme();
-  const colors = getColors(theme, color || 'primary');
-  const { main } = colors;
+    const theme = useTheme();
+    const colors = getColors(theme, color || 'primary');
+    const { main } = colors;
 
-  return (
-    <Box
-      sx={{
-        width: size || 8,
-        height: size || 8,
-        borderRadius: '50%',
-        bgcolor: variant === 'outlined' ? '' : main,
-        ...(variant === 'outlined' && { border: `1px solid ${main}` }),
-        ...sx
-      }}
-    />
-  );
+    return (
+        <Box
+            sx={{
+                width: size || 8,
+                height: size || 8,
+                borderRadius: '50%',
+                bgcolor: variant === 'outlined' ? '' : main,
+                ...(variant === 'outlined' && { border: `1px solid ${main}` }),
+                ...sx
+            }}
+        />
+    );
 }

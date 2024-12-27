@@ -94,7 +94,8 @@ export default function Snackbar() {
                     anchorOrigin={snackbar.anchorOrigin}
                     open={snackbar.open}
                     autoHideDuration={1500}
-                    onClose={handleClose}>
+                    onClose={handleClose}
+                >
                     <Alert
                         variant={snackbar.alert.variant}
                         color={snackbar.alert.color}
@@ -112,7 +113,8 @@ export default function Snackbar() {
                                         aria-label="close"
                                         variant="contained"
                                         color={snackbar.alert.color}
-                                        onClick={handleClose}>
+                                        onClick={handleClose}
+                                    >
                                         <CloseOutlined />
                                     </IconButton>
                                 )}
@@ -122,7 +124,8 @@ export default function Snackbar() {
                             ...(snackbar.alert.variant === 'outlined' && {
                                 bgcolor: 'grey.0'
                             })
-                        }}>
+                        }}
+                    >
                         {snackbar.message}
                     </Alert>
                 </MuiSnackbar>

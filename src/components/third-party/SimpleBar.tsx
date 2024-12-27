@@ -14,48 +14,48 @@ import { ThemeMode } from 'config';
 
 // root style
 const RootStyle = styled(BrowserView)({
-  flexGrow: 1,
-  height: '100%',
-  overflow: 'hidden'
+    flexGrow: 1,
+    height: '100%',
+    overflow: 'hidden'
 });
 
 // scroll bar wrapper
 const SimpleBarStyle = styled(SimpleBar)(({ theme }) => ({
-  maxHeight: '100%',
-  '& .simplebar-scrollbar': {
-    '&:before': {
-      background: alpha(theme.palette.grey[theme.palette.mode === ThemeMode.DARK ? 200 : 500], 0.48)
+    maxHeight: '100%',
+    '& .simplebar-scrollbar': {
+        '&:before': {
+            background: alpha(theme.palette.grey[theme.palette.mode === ThemeMode.DARK ? 200 : 500], 0.48)
+        },
+        '&.simplebar-visible:before': {
+            opacity: 1
+        }
     },
-    '&.simplebar-visible:before': {
-      opacity: 1
+    '& .simplebar-track.simplebar-vertical': {
+        width: 10
+    },
+    '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
+        height: 6
+    },
+    '& .simplebar-mask': {
+        zIndex: 'inherit'
     }
-  },
-  '& .simplebar-track.simplebar-vertical': {
-    width: 10
-  },
-  '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
-    height: 6
-  },
-  '& .simplebar-mask': {
-    zIndex: 'inherit'
-  }
 }));
 
 // ==============================|| SIMPLE SCROLL BAR ||============================== //
 
 export default function SimpleBarScroll({ children, sx, ...other }: MUIStyledCommonProps<Theme> & Props) {
-  return (
-    <>
-      <RootStyle>
-        <SimpleBarStyle clickOnTrack={false} sx={sx} {...other}>
-          {children as ReactNode}
-        </SimpleBarStyle>
-      </RootStyle>
-      <MobileView>
-        <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
-          {children as ReactNode}
-        </Box>
-      </MobileView>
-    </>
-  );
+    return (
+        <>
+            <RootStyle>
+                <SimpleBarStyle clickOnTrack={false} sx={sx} {...other}>
+                    {children as ReactNode}
+                </SimpleBarStyle>
+            </RootStyle>
+            <MobileView>
+                <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
+                    {children as ReactNode}
+                </Box>
+            </MobileView>
+        </>
+    );
 }

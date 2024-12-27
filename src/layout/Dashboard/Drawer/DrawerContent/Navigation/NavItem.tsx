@@ -54,7 +54,9 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                 ...(menuOrientation === MenuOrientation.HORIZONTAL && isParents && { fontSize: 20, stroke: '1.5' })
             }}
         />
-    ) : false;
+    ) : (
+        false
+    );
 
     const { pathname } = useLocation();
     const isSelected = !!matchPath({ path: item?.link ? item.link : item.url!, end: false }, pathname);
@@ -96,7 +98,8 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                         }}
                         {...(downLG && {
                             onClick: () => handlerDrawerOpen(false)
-                        })}>
+                        })}
+                    >
                         {itemIcon && (
                             <ListItemIcon
                                 sx={{
@@ -119,7 +122,8 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                                                 bgcolor: mode === ThemeMode.DARK ? 'primary.darker' : 'primary.lighter'
                                             }
                                         })
-                                }}>
+                                }}
+                            >
                                 {itemIcon}
                             </ListItemIcon>
                         )}
@@ -175,7 +179,8 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                                         color: 'secondary.dark',
                                         borderColor: isSelected ? 'primary.light' : 'secondary.light',
                                         '&:hover': { borderColor: isSelected ? 'primary.main' : 'secondary.main' }
-                                    }}>
+                                    }}
+                                >
                                     <ActionIcon style={{ fontSize: '0.625rem' }} />
                                 </IconButton>
                             );
@@ -193,7 +198,8 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                         '&:hover': { bgcolor: 'transparent' },
                         ...(isParents && { p: 1, mr: 1 }),
                         '&.Mui-selected': { bgcolor: 'transparent', '&:hover': { bgcolor: 'transparent' } }
-                    }}>
+                    }}
+                >
                     {itemIcon && (
                         <ListItemIcon
                             sx={{
@@ -211,7 +217,8 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                                         bgcolor: 'transparent',
                                         '&:hover': { bgcolor: 'transparent' }
                                     })
-                            }}>
+                            }}
+                        >
                             {itemIcon}
                         </ListItemIcon>
                     )}
@@ -231,7 +238,8 @@ export default function NavItem({ item, level, isParents = false }: Props) {
                                         bgcolor: 'transparent',
                                         '&:hover': { bgcolor: 'transparent' }
                                     })
-                            }}>
+                            }}
+                        >
                             <Dot size={4} color={isSelected ? 'primary' : 'secondary'} />
                         </ListItemIcon>
                     )}

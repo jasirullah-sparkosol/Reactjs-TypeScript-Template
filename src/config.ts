@@ -14,46 +14,46 @@ export const DRAWER_WIDTH = 260;
 export const MINI_DRAWER_WIDTH = 60;
 
 export enum SimpleLayoutType {
-  SIMPLE = 'simple',
-  LANDING = 'landing'
+    SIMPLE = 'simple',
+    LANDING = 'landing'
 }
 
 export enum ThemeMode {
-  LIGHT = 'light',
-  DARK = 'dark'
+    LIGHT = 'light',
+    DARK = 'dark'
 }
 
 export enum MenuOrientation {
-  VERTICAL = 'vertical',
-  HORIZONTAL = 'horizontal'
+    VERTICAL = 'vertical',
+    HORIZONTAL = 'horizontal'
 }
 
 export enum ThemeDirection {
-  LTR = 'ltr',
-  RTL = 'rtl'
+    LTR = 'ltr',
+    RTL = 'rtl'
 }
 
 export enum NavActionType {
-  FUNCTION = 'function',
-  LINK = 'link'
+    FUNCTION = 'function',
+    LINK = 'link'
 }
 
 export enum DropzopType {
-  DEFAULT = 'default',
-  STANDARD = 'standard'
+    DEFAULT = 'default',
+    STANDARD = 'standard'
 }
 
 // ==============================|| THEME CONFIG ||============================== //
 
 const config: DefaultConfigProps = {
-  fontFamily: `'Public Sans', sans-serif`,
-  i18n: 'en',
-  menuOrientation: MenuOrientation.VERTICAL,
-  miniDrawer: false,
-  container: true,
-  mode: ThemeMode.LIGHT,
-  presetColor: 'default',
-  themeDirection: ThemeDirection.LTR
+    fontFamily: `'Public Sans', sans-serif`,
+    i18n: 'en',
+    menuOrientation: MenuOrientation.VERTICAL,
+    miniDrawer: false,
+    container: true,
+    mode: ThemeMode.LIGHT,
+    presetColor: 'default',
+    themeDirection: ThemeDirection.LTR
 };
 
 export default config;

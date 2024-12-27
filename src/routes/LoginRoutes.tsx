@@ -15,43 +15,43 @@ const AuthCodeVerification = Loadable(lazy(() => import('pages/auth/code-verific
 // ==============================|| AUTH ROUTING ||============================== //
 
 const LoginRoutes = {
-  path: '/',
-  children: [
-    {
-      path: '/',
-      element: <AuthLayout />,
-      children: [
+    path: '/',
+    children: [
         {
-          path: '/',
-          element: <AuthLogin />
-        },
-        {
-          path: 'login',
-          element: <AuthLogin />
-        },
-        {
-          path: 'register',
-          element: <AuthRegister />
-        },
-        {
-          path: 'forgot-password',
-          element: <AuthForgotPassword />
-        },
-        {
-          path: 'check-mail',
-          element: <AuthCheckMail />
-        },
-        {
-          path: 'reset-password',
-          element: <AuthResetPassword />
-        },
-        {
-          path: 'code-verification',
-          element: <AuthCodeVerification />
+            path: '/',
+            element: <AuthLayout />,
+            children: [
+                {
+                    path: '/',
+                    element: <AuthLogin />
+                },
+                {
+                    path: 'login',
+                    element: <AuthLogin />
+                },
+                {
+                    path: 'register',
+                    element: <AuthRegister />
+                },
+                {
+                    path: 'forgot-password',
+                    element: <AuthForgotPassword />
+                },
+                {
+                    path: 'check-mail',
+                    element: <AuthCheckMail />
+                },
+                {
+                    path: 'reset-password',
+                    element: <AuthResetPassword />
+                },
+                {
+                    path: 'code-verification',
+                    element: <AuthCodeVerification />
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 };
 
 export default LoginRoutes;

@@ -14,21 +14,21 @@ import { ThemeDirection } from 'config';
 // ==============================|| RTL LAYOUT ||============================== //
 
 interface Props {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 export default function RTLLayout({ children }: Props) {
-  const { themeDirection } = useConfig();
+    const { themeDirection } = useConfig();
 
-  useEffect(() => {
-    document.dir = themeDirection;
-  }, [themeDirection]);
+    useEffect(() => {
+        document.dir = themeDirection;
+    }, [themeDirection]);
 
-  const cacheRtl = createCache({
-    key: themeDirection === ThemeDirection.RTL ? 'rtl' : 'css',
-    prepend: true,
-    stylisPlugins: themeDirection === ThemeDirection.RTL ? [rtlPlugin as StylisPlugin] : []
-  });
+    const cacheRtl = createCache({
+        key: themeDirection === ThemeDirection.RTL ? 'rtl' : 'css',
+        prepend: true,
+        stylisPlugins: themeDirection === ThemeDirection.RTL ? [rtlPlugin as StylisPlugin] : []
+    });
 
-  return <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
+    return <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
 }

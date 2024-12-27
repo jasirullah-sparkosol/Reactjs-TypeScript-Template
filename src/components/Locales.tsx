@@ -9,37 +9,37 @@ import { I18n } from 'types/config';
 
 // load locales files
 const loadLocaleData = (locale: I18n) => {
-  switch (locale) {
-    case 'en':
-    default:
-      return import('utils/locales/en.json');
-  }
+    switch (locale) {
+        case 'en':
+        default:
+            return import('utils/locales/en.json');
+    }
 };
 
 // ==============================|| LOCALIZATION ||============================== //
 
 interface Props {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 export default function Locales({ children }: Props) {
-  const { i18n } = useConfig();
+    const { i18n } = useConfig();
 
-  const [messages, setMessages] = useState<Record<string, string> | Record<string, MessageFormatElement[]> | undefined>();
+    const [messages, setMessages] = useState<Record<string, string> | Record<string, MessageFormatElement[]> | undefined>();
 
-  useEffect(() => {
-    loadLocaleData(i18n).then((d: { default: Record<string, string> | Record<string, MessageFormatElement[]> | undefined }) => {
-      setMessages(d.default);
-    });
-  }, [i18n]);
+    useEffect(() => {
+        loadLocaleData(i18n).then((d: { default: Record<string, string> | Record<string, MessageFormatElement[]> | undefined }) => {
+            setMessages(d.default);
+        });
+    }, [i18n]);
 
-  return (
-    <>
-      {messages && (
-        <IntlProvider locale={i18n} defaultLocale="en" messages={messages}>
-          {children}
-        </IntlProvider>
-      )}
-    </>
-  );
+    return (
+        <>
+            {messages && (
+                <IntlProvider locale={i18n} defaultLocale="en" messages={messages}>
+                    {children}
+                </IntlProvider>
+            )}
+        </>
+    );
 }

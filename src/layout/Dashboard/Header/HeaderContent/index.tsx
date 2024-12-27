@@ -18,21 +18,21 @@ import DrawerHeader from 'layout/Dashboard/Drawer/DrawerHeader';
 // ==============================|| HEADER - CONTENT ||============================== //
 
 export default function HeaderContent() {
-  const { menuOrientation } = useConfig();
+    const { menuOrientation } = useConfig();
 
-  const downLG = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+    const downLG = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
 
-  return (
-    <>
-      {menuOrientation === MenuOrientation.HORIZONTAL && !downLG && <DrawerHeader open={true} />}
-      {!downLG && <Search />}
-      {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
+    return (
+        <>
+            {menuOrientation === MenuOrientation.HORIZONTAL && !downLG && <DrawerHeader open={true} />}
+            {!downLG && <Search />}
+            {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
 
-      <Notification />
-      <Message />
-      {!downLG && <FullScreen />}
-      {!downLG && <Profile />}
-      {downLG && <MobileSection />}
-    </>
-  );
+            <Notification />
+            <Message />
+            {!downLG && <FullScreen />}
+            {!downLG && <Profile />}
+            {downLG && <MobileSection />}
+        </>
+    );
 }

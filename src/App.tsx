@@ -17,24 +17,24 @@ import { ReduxPersisted } from './store';
 // ==============================|| APP - THEME, ROUTER, LOCAL ||============================== //
 
 const App = () => (
-  <ReduxPersisted>
-    <ThemeCustomization>
-      {/* <RTLLayout> */}
-      <Locales>
-        <ScrollTop>
-          <AuthProvider>
-            <>
-              <Notistack>
-                <RouterProvider router={router} />
-                <Snackbar />
-              </Notistack>
-            </>
-          </AuthProvider>
-        </ScrollTop>
-      </Locales>
-      {/* </RTLLayout> */}
-    </ThemeCustomization>
-  </ReduxPersisted>
+    <ReduxPersisted>
+        <ThemeCustomization>
+            {/* <RTLLayout> */}
+            <Locales>
+                <ScrollTop>
+                    <AuthProvider>
+                        <>
+                            <Notistack>
+                                <RouterProvider router={router} />
+                                <Snackbar />
+                            </Notistack>
+                        </>
+                    </AuthProvider>
+                </ScrollTop>
+            </Locales>
+            {/* </RTLLayout> */}
+        </ThemeCustomization>
+    </ReduxPersisted>
 );
 
 export default App;

@@ -14,18 +14,18 @@ import useAuth from 'hooks/useAuth';
 // ==============================|| MAIN LOGO ||============================== //
 
 interface Props {
-  reverse?: boolean;
-  isIcon?: boolean;
-  sx?: SxProps;
-  to?: To;
+    reverse?: boolean;
+    isIcon?: boolean;
+    sx?: SxProps;
+    to?: To;
 }
 
 export default function LogoSection({ reverse, isIcon, sx, to }: Props) {
-  const { isLoggedIn } = useAuth();
+    const { isLoggedIn } = useAuth();
 
-  return (
-    <ButtonBase disableRipple {...(isLoggedIn && { component: Link, to: !to ? APP_DEFAULT_PATH : to, sx })}>
-      {isIcon ? <LogoIcon /> : <Logo reverse={reverse} />}
-    </ButtonBase>
-  );
+    return (
+        <ButtonBase disableRipple {...(isLoggedIn && { component: Link, to: !to ? APP_DEFAULT_PATH : to, sx })}>
+            {isIcon ? <LogoIcon /> : <Logo reverse={reverse} />}
+        </ButtonBase>
+    );
 }

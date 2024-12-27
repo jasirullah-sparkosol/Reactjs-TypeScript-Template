@@ -37,9 +37,9 @@ const root = createRoot(container!);
 // ==============================|| MAIN - REACT DOM RENDER ||============================== //
 
 root.render(
-  <ConfigProvider>
-    <App />
-  </ConfigProvider>
+    <ConfigProvider>
+        <App />
+    </ConfigProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

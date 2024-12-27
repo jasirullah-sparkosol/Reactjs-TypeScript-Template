@@ -74,7 +74,8 @@ export default function AuthLogin({ isDemo = false }: { isDemo?: boolean }) {
                             setSubmitting(false);
                         }
                     }
-                }}>
+                }}
+            >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit}>
                         <Grid container spacing={3}>
@@ -118,7 +119,8 @@ export default function AuthLogin({ isDemo = false }: { isDemo?: boolean }) {
                                                     onClick={handleClickShowPassword}
                                                     onMouseDown={handleMouseDownPassword}
                                                     edge="end"
-                                                    color="secondary">
+                                                    color="secondary"
+                                                >
                                                     {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                                                 </IconButton>
                                             </InputAdornment>
@@ -166,7 +168,8 @@ export default function AuthLogin({ isDemo = false }: { isDemo?: boolean }) {
                                         size="large"
                                         type="submit"
                                         variant="contained"
-                                        color="primary">
+                                        color="primary"
+                                    >
                                         Login
                                     </Button>
                                 </AnimateButton>

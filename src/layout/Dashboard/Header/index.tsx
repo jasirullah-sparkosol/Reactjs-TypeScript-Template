@@ -54,7 +54,8 @@ export default function Header() {
                         color: 'text.primary',
                         bgcolor: drawerOpen ? 'transparent' : iconBackColor,
                         ml: { xs: 0, lg: -2 }
-                    }}>
+                    }}
+                >
                     {!drawerOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </IconButton>
             ) : null}

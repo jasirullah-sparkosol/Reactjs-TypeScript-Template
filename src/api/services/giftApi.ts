@@ -46,12 +46,5 @@ export const GiftApi = createApi({
     })
 });
 
-export const {
-    usePostGiftMutation,
-    useGetGiftsQuery,
-    useLazyGetGiftQuery,
-    useGetGiftQuery,
-    useUpdateGiftMutation,
-    useDeleteGiftMutation
-} =
+export const { usePostGiftMutation, useGetGiftsQuery, useLazyGetGiftQuery, useGetGiftQuery, useUpdateGiftMutation, useDeleteGiftMutation } =
     GiftApi;

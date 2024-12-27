@@ -57,7 +57,8 @@ export default function DashboardLayout() {
                             minHeight: 'calc(100vh - 110px)',
                             display: 'flex',
                             flexDirection: 'column'
-                        }}>
+                        }}
+                    >
                         <Breadcrumbs />
                         <Outlet />
                         {/*<Footer />*/}

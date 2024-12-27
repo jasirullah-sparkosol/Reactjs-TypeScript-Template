@@ -60,7 +60,8 @@ export default function MainDrawer({ window }: Props) {
                             backgroundImage: 'none',
                             boxShadow: 'inherit'
                         }
-                    }}>
+                    }}
+                >
                     {drawerHeader}
                     {drawerContent}
                 </Drawer>
