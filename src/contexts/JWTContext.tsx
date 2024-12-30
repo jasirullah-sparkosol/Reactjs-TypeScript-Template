@@ -17,6 +17,8 @@ import API_ROUTES from '../api/routes';
 
 const chance = new Chance();
 
+let JWTContextValue: Partial<JWTContextType> | null = null;
+
 // constant
 const initialState: AuthProps = {
     isLoggedIn: false,
@@ -80,6 +82,13 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
         };
 
         init();
+    }, []);
+
+    useEffect(() => {
+        JWTContextValue = { logout };
+        return () => {
+            JWTContextValue = null; // Cleanup on unmount
+        };
     }, []);
 
     const login = async (phone: string, password: string) => {
@@ -146,3 +155,11 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
 };
 
 export default JWTContext;
+
+// Helper to access the context value globally
+export const getJWTContext = () => {
+    if (!JWTContextValue) {
+        throw new Error('JWTContext is not available outside a React component');
+    }
+    return JWTContextValue;
+};

@@ -11,7 +11,10 @@ export type UserProfile = {
     name?: string;
     phone?: string;
     dob?: string;
-    role?: string;
+    role: {
+        name: string;
+        permissions: string[];
+    };
     fcmTokens?: string[];
     points?: number;
     redeemedPoints?: number;

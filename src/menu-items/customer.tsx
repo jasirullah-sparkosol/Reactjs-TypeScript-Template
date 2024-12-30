@@ -1,5 +1,5 @@
 // This is example of menu item without group for horizontal layout. There will be no children.
-import { GiftOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 
 // third-party
 import { FormattedMessage } from 'react-intl';
@@ -9,12 +9,12 @@ import { NavItemType } from 'types/menu';
 
 // ==============================|| MENU ITEMS - SAMPLE PAGE ||============================== //
 
-const gift: NavItemType = {
-    id: 'gifts',
+const user: NavItemType = {
+    id: 'customers',
     type: 'group',
-    title: <FormattedMessage id="Gifts" />,
-    url: '/gifts',
-    icon: GiftOutlined,
+    title: <FormattedMessage id="Customers" />,
+    url: '/customers',
+    icon: UserOutlined
 };
 
-export default gift;
+export default user;

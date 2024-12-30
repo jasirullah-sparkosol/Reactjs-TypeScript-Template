@@ -111,10 +111,9 @@ export default function Profile() {
                 ref={anchorRef}
                 aria-controls={open ? 'profile-grow' : undefined}
                 aria-haspopup="true"
-                onClick={handleToggle}
-            >
+                onClick={handleToggle}>
                 <Stack direction="row" spacing={1.25} alignItems="center" sx={{ p: 0.5 }}>
-                    <Avatar alt="profile user" src={avatar1} size="sm" />
+                    <Avatar alt={user?.name} src={user?.profilePicture} size="sm" />
                     <Typography variant="subtitle1" sx={{ textTransform: 'capitalize' }}>
                         {user?.name}
                     </Typography>
@@ -136,25 +135,32 @@ export default function Profile() {
                             }
                         }
                     ]
-                }}
-            >
+                }}>
                 {({ TransitionProps }) => (
                     <Transitions type="grow" position="top-right" in={open} {...TransitionProps}>
-                        <Paper sx={{ boxShadow: theme.customShadows.z1, width: 290, minWidth: 240, maxWidth: { xs: 250, md: 290 } }}>
+                        <Paper
+                            sx={{
+                                boxShadow: theme.customShadows.z1,
+                                width: 290,
+                                minWidth: 240,
+                                maxWidth: { xs: 250, md: 290 }
+                            }}>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MainCard elevation={0} border={false} content={false}>
                                     <CardContent sx={{ px: 2.5, pt: 3 }}>
                                         <Grid container justifyContent="space-between" alignItems="center">
                                             <Grid item>
-                                                <Stack direction="row" spacing={1.25} alignItems="center">
-                                                    <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-                                                    <Stack>
-                                                        <Typography variant="h6">{user?.name}</Typography>
-                                                        <Typography variant="body2" color="text.secondary">
-                                                            UI/UX Designer
-                                                        </Typography>
+                                                {user && (
+                                                    <Stack direction="row" spacing={1.25} alignItems="center">
+                                                        <Avatar alt={user.name} src={user.profilePicture} />
+                                                        <Stack>
+                                                            <Typography variant="h6">{user.name}</Typography>
+                                                            <Typography variant="body2" color="text.secondary">
+                                                                {user.phone}
+                                                            </Typography>
+                                                        </Stack>
                                                     </Stack>
-                                                </Stack>
+                                                )}
                                             </Grid>
                                             <Grid item>
                                                 <Tooltip title="Logout">
@@ -165,41 +171,7 @@ export default function Profile() {
                                             </Grid>
                                         </Grid>
                                     </CardContent>
-
-                                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                        <Tabs variant="fullWidth" value={value} onChange={handleChange} aria-label="profile tabs">
-                                            <Tab
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexDirection: 'row',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    textTransform: 'capitalize'
-                                                }}
-                                                icon={<UserOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                                                label="Profile"
-                                                {...a11yProps(0)}
-                                            />
-                                            <Tab
-                                                sx={{
-                                                    display: 'flex',
-                                                    flexDirection: 'row',
-                                                    justifyContent: 'center',
-                                                    alignItems: 'center',
-                                                    textTransform: 'capitalize'
-                                                }}
-                                                icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                                                label="Setting"
-                                                {...a11yProps(1)}
-                                            />
-                                        </Tabs>
-                                    </Box>
-                                    <TabPanel value={value} index={0} dir={theme.direction}>
-                                        <ProfileTab handleLogout={handleLogout} />
-                                    </TabPanel>
-                                    <TabPanel value={value} index={1} dir={theme.direction}>
-                                        <SettingTab />
-                                    </TabPanel>
+                                    {open && <ProfileTab handleLogout={handleLogout} />}
                                 </MainCard>
                             </ClickAwayListener>
                         </Paper>

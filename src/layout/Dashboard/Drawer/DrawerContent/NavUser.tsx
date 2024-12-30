@@ -93,17 +93,15 @@ export default function NavUser() {
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
                             onClick={handleClick}
-                            aria-label="show more"
-                        >
+                            aria-label="show more">
                             <RightOutlined style={{ fontSize: '0.625rem' }} />
                         </ExpandMore>
                     }
-                    sx={{ '& .MuiListItemSecondaryAction-root': { right: !drawerOpen ? -20 : -16 } }}
-                >
+                    sx={{ '& .MuiListItemSecondaryAction-root': { right: !drawerOpen ? -20 : -16 } }}>
                     <ListItemAvatar>
-                        <Avatar alt="Avatar" src={avatar1} sx={{ ...(drawerOpen && { width: 46, height: 46 }) }} />
+                        {user && <Avatar alt="Avatar" src={user.profilePicture} sx={{ ...(drawerOpen && { width: 46, height: 46 }) }} />}
                     </ListItemAvatar>
-                    <ListItemText primary={user?.name} secondary="UI/UX Designer" />
+                    <ListItemText primary={user?.name} secondary={user?.phone} />
                 </ListItem>
             </List>
             <Menu
@@ -113,15 +111,14 @@ export default function NavUser() {
                 onClose={handleClose}
                 MenuListProps={{ 'aria-labelledby': 'basic-button' }}
                 anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            >
+                transformOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                <MenuItem component={Link} to="#" onClick={handleClose}>
-                    Profile
-                </MenuItem>
-                <MenuItem component={Link} to="#" onClick={handleClose}>
-                    My account
-                </MenuItem>
+                {/*<MenuItem component={Link} to="#" onClick={handleClose}>*/}
+                {/*    Profile*/}
+                {/*</MenuItem>*/}
+                {/*<MenuItem component={Link} to="#" onClick={handleClose}>*/}
+                {/*    My account*/}
+                {/*</MenuItem>*/}
             </Menu>
         </Box>
     );

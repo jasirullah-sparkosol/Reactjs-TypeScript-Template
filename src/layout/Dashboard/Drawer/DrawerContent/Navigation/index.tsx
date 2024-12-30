@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useLayoutEffect, useMemo, useState } from 'react';
 
 // material-ui
 import { Theme } from '@mui/material/styles';
@@ -20,11 +20,14 @@ import { HORIZONTAL_MAX_ITEM, MenuOrientation } from 'config';
 import { MenuProps, NavItemType } from 'types/menu';
 import { useSelector } from 'react-redux';
 import { RootStateProps } from 'types/root';
+import { identifyRoutePermission } from 'utils/auth';
+import useAuth from 'hooks/useAuth';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
 export default function Navigation() {
     const { menuOrientation } = useConfig();
+    const { user } = useAuth();
     const menuMaster = useSelector<RootStateProps, MenuProps>((state) => state.menu);
     const drawerOpen = menuMaster.isDashboardDrawerOpened;
     const downLG = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
@@ -34,10 +37,22 @@ export default function Navigation() {
     const [selectedLevel, setSelectedLevel] = useState<number>(0);
     const [menuItems, setMenuItems] = useState<{ items: NavItemType[] }>({ items: [] });
 
+    const authorizedMenuItems = useMemo(() => {
+        if (user && menuItem) {
+            const allowedPermissions = user?.role?.permissions || [];
+
+            return {
+                items: menuItem.items.filter((item) => allowedPermissions.includes(identifyRoutePermission(item.url || '')))
+            };
+        }
+        // @ts-ignore
+    }, [user, menuItem]);
+
     useLayoutEffect(() => {
-        setMenuItems(menuItem);
+        // @ts-ignore
+        return setMenuItems(authorizedMenuItems);
         // eslint-disable-next-line
-    }, [menuItem]);
+    }, [authorizedMenuItems]);
 
     const isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downLG;
 

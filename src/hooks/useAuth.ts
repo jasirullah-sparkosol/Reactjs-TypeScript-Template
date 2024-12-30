@@ -12,3 +12,13 @@ export default function useAuth() {
 
     return context;
 }
+
+export const useAuthorization = () => {
+    const { user } = useAuth();
+    const permissions = (user && user?.role?.permissions) || [];
+    const isAuthorized = (permission: string): boolean => {
+        return permissions.includes(permission);
+    };
+
+    return { isAuthorized };
+};

@@ -2,8 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
 import { SIGN_IN_PATH } from 'config';
-import JWTContext from 'contexts/JWTContext';
-import React from 'react';
+import { getJWTContext } from 'contexts/JWTContext';
 
 const BASE_URL = import.meta.env.VITE_APP_API_URL as string;
 console.log('RTK BaseURL:', BASE_URL);
@@ -27,8 +26,7 @@ const baseQueryWithAuth = fetchBaseQuery({
 
 // BaseQuery with auth headers and re-auth if 401
 const baseQueryWithReAuth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (args, api, extraOptions) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const context = React.useContext(JWTContext);
+    const context = getJWTContext();
 
     let result = await baseQueryWithAuth(args, api, extraOptions);
     if (result.error && result.error.status === 401 && !window.location.href.includes('/sign-in')) {
